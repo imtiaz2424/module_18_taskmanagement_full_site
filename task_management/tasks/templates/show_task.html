@@ -1,0 +1,32 @@
+<!-- {% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-center">All task here</h1>
+<div class="d-flex flex-wrap justify-content-center px-5 pt-5">
+    
+    {% for task in data %}
+    <div class="col-sm-3">
+        <div class="card mx-2">
+            <div class="card-body">
+              <h4>ID : {{task.id}}</h4>              
+              <h6 class="card-subtitle mb-2 text-muted">{{task.assign_date}}</h6>
+              <p class="card-text">{{task.description}}</p>
+              <p>Category : 
+                {% for cat in task.category.all %}
+                <button class="btn btn-primary btn-sm m-1">{{cat.name}}</button>
+
+                {% endfor %}
+              </p>              
+              <a href="#" class="btn btn-success">Edit</a>
+              <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+    </div>
+
+    {% endfor %}
+      
+    
+        
+</div>
+{% endblock %} -->
