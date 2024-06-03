@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from . import forms
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth import authenticate, login, update_session_auth_hash, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from tasks.models import Task
 
 # Create your views here.
 
@@ -49,8 +50,9 @@ def user_login(request):
 
 
 @login_required
-def profile(request):    
-    return render(request, 'profile.html')
+def profile(request): 
+    data = Task.objects.filter(author = request.user)   
+    return render(request, 'profile.html', {'data' : data})
 
 
 @login_required
@@ -79,3 +81,8 @@ def pass_change(request):
         pass_change_form = PasswordChangeForm(user=request.user)
     return render(request, 'pass_change.html', {'form' : pass_change_form})
 
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
