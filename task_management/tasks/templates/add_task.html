@@ -11,6 +11,12 @@
 
     {{form | crispy}}
 
-    <button class="btn btn-warning">Submit</button>
+    <!-- {% for fm in form %}
+    {{fm.label_tag}}
+    {{fm}}
+    {{fm.errors}}
+    {% endfor %}  -->
+
+    <button class="btn btn-primary">Submit</button>
 </form>
 {% endblock %}

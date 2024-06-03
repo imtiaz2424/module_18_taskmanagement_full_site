@@ -7,6 +7,8 @@ def add_task(request):
     if request.method == 'POST':
         task_form = forms.TaskForm(request.POST)
         if task_form.is_valid():
+            # task_form.cleaned_data['author'] = request.user
+            task_form.instance.author = request.user
             task_form.save()
             return redirect('show_task')
     else:
